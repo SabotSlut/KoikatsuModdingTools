@@ -25,7 +25,7 @@ public class GateInjector : MonoBehaviour {
     public int MapID = -1;
     public Transform SpawnPoint;
     public BoxCollider CollisionBox;
-    public bool UseOnCollision;
+    public bool UseOnCollision = true;
 
     private static readonly Vector3 modelOffset = new Vector3(0, 1.145f, 0);
 

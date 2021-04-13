@@ -9,21 +9,17 @@ namespace Assets.Map.Editor
     [ExecuteInEditMode]
     public class VisualiseGizmos : MonoBehaviour
     {
-        public Transform Map_Container;
         public Transform HPoint_Container;
         public HDisplayType HPoint_DisplayType = HDisplayType.FirstPosition;
         public bool HPoint_DisplayAxis = true;
 
         void OnDrawGizmos()
         {
-            if (Map_Container)
+            var spawn = GameObject.FindGameObjectWithTag("Action/WarpPoint");
+            if (spawn)
             {
-                var spawn = GameObject.FindGameObjectWithTag("Action/WarpPoint");
-                if (spawn)
-                {
-                    Gizmos.DrawIcon(spawn.transform.position + Vector3.up * 0.5f, "icon_warppoint");
-                    GizmosHelper.DrawAxis(spawn.transform);
-                }
+                Gizmos.DrawIcon(spawn.transform.position + Vector3.up * 0.5f, "icon_warppoint");
+                GizmosHelper.DrawAxis(spawn.transform);
             }
 
             if (HPoint_Container)
