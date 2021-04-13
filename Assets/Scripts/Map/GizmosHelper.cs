@@ -2,9 +2,11 @@
 
 using H;
 using System.Collections.Generic;
+using Assets.Map.Editor;
 using UnityEditor;
 using UnityEngine;
 
+[ExecuteInEditMode]
 public static class GizmosHelper
 {
     const float AXIS_SIZE = 0.3f;
@@ -51,7 +53,7 @@ public static class GizmosHelper
         { 3000, HPointGizmoType.F2M }, //3P
     };
 
-    public static void HPoint(HPointData hpointData)
+    public static void HPoint(HPointData hpointData, VisualiseGizmos.HDisplayType displayType)
     {
         var t = hpointData.transform;
         var pos = t.position + hpointData._offsetPos;
@@ -59,40 +61,56 @@ public static class GizmosHelper
 
         Gizmos.matrix = Matrix4x4.TRS(pos, rot, t.lossyScale);
 
-        if (hpointData._categorys.Length != 0)
+        if (displayType == VisualiseGizmos.HDisplayType.FirstPosition ||
+            displayType == VisualiseGizmos.HDisplayType.AllPositions)
         {
-            int category = hpointData._categorys[0];
-
-            HPointGizmoType gizmoType;
-            if (HPointGizmoInfo.TryGetValue(category, out gizmoType))
+            foreach (int category in hpointData._categorys)
             {
-                switch (gizmoType)
+                HPointGizmoType gizmoType;
+                if (HPointGizmoInfo.TryGetValue(category, out gizmoType))
                 {
-                    case HPointGizmoType.F1:
-                        DrawFemale1(category);
-                        break;
-                    case HPointGizmoType.F1M:
-                        DrawFemale1(category);
-                        DrawMale(category);
-                        break;
-                    case HPointGizmoType.F2:
-                        DrawFemale1(category);
-                        DrawFemale2(category);
-                        break;
-                    case HPointGizmoType.F2M:
-                        DrawFemale1(category);
-                        DrawFemale2(category);
-                        DrawMale(category);
-                        break;
+                    switch (gizmoType)
+                    {
+                        case HPointGizmoType.F1:
+                            DrawFemale1(category);
+                            break;
+                        case HPointGizmoType.F1M:
+                            DrawFemale1(category);
+                            DrawMale(category);
+                            break;
+                        case HPointGizmoType.F2:
+                            DrawFemale1(category);
+                            DrawFemale2(category);
+                            break;
+                        case HPointGizmoType.F2M:
+                            DrawFemale1(category);
+                            DrawFemale2(category);
+                            DrawMale(category);
+                            break;
+                    }
+                }
+                else
+                {
+                    Gizmos.DrawWireSphere(Vector3.zero, hpdSafeSize);
+                    Gizmos.color = Color.yellow;
+                    Gizmos.DrawCube(hpdCubeOffset, hpdCubeSize);
+                }
+
+                if (displayType == VisualiseGizmos.HDisplayType.FirstPosition)
+                {
+                    break;
                 }
             }
-            else
-            {
-                Gizmos.DrawWireSphere(Vector3.zero, hpdSafeSize);
-                Gizmos.color = Color.yellow;
-                Gizmos.DrawCube(hpdCubeOffset, hpdCubeSize);
-            }
-            DrawAxis();
+        }
+        else if (displayType == VisualiseGizmos.HDisplayType.Shape)
+        {
+            Gizmos.DrawWireSphere(Vector3.zero, hpdSafeSize);
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawCube(hpdCubeOffset, hpdCubeSize);
+        }
+        else if (displayType == VisualiseGizmos.HDisplayType.Icon)
+        {
+            Gizmos.DrawIcon(t.position + Vector3.up * 0.5f, "icon_h");
         }
 
         Gizmos.matrix = Matrix4x4.identity;
