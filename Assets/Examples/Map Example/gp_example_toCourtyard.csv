@@ -1,0 +1,7 @@
+Name,gp_example_toCourtyard
+Target Gate,gp_example_toPurpleRoom
+Map ID,6900
+Transform,0,0,0,0,0,0
+Spawn,0,0,-7.1,0,0,0
+Collision,0,0.4,-9.6,2.1,1,1
+Use On Collision,True

@@ -52,7 +52,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4083531236161198}
   - component: {fileID: 114234994040699068}
-  - component: {fileID: 114257664268148374}
+  - component: {fileID: 114425250831940348}
   m_Layer: 0
   m_Name: Map
   m_TagString: Untagged
@@ -2623,7 +2623,7 @@ MonoBehaviour:
     aceLutTexture: {fileID: 2800000, guid: 8dfd2470c7fac8549bc8851080d425a8, type: 3}
     aceLutBlendTexture: {fileID: 0}
     aceBlendAmount: 0
---- !u!114 &114257664268148374
+--- !u!114 &114425250831940348
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -2635,6 +2635,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HPoint_Container: {fileID: 0}
+  HPoint_DisplayType: 3
+  HPoint_DisplayAxis: 1
 --- !u!114 &114801448222964250
 MonoBehaviour:
   m_ObjectHideFlags: 1
