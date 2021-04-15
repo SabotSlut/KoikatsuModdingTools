@@ -7,8 +7,9 @@ using UnityEngine.SceneManagement;
 namespace Assets.Map.Editor
 {
     [ExecuteInEditMode]
-    public class VisualiseGizmos : MonoBehaviour
+    public class MappingHelper : MonoBehaviour
     {
+        public MapInfo MapInfo;
         public Transform HPoint_Container;
         public HDisplayType HPoint_DisplayType = HDisplayType.FirstPosition;
         public bool HPoint_DisplayAxis = true;

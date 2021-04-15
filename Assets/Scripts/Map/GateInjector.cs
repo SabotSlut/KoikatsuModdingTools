@@ -22,7 +22,6 @@ public class GateInjector : MonoBehaviour {
     }
 
     public string TargetGate;
-    public int MapID = -1;
     public Transform SpawnPoint;
     public BoxCollider CollisionBox;
     public bool UseOnCollision = true;

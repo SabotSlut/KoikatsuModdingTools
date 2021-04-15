@@ -53,7 +53,7 @@ public static class GizmosHelper
         { 3000, HPointGizmoType.F2M }, //3P
     };
 
-    public static void HPoint(HPointData hpointData, VisualiseGizmos.HDisplayType displayType)
+    public static void HPoint(HPointData hpointData, MappingHelper.HDisplayType displayType)
     {
         var t = hpointData.transform;
         var pos = t.position + hpointData._offsetPos;
@@ -61,8 +61,8 @@ public static class GizmosHelper
 
         Gizmos.matrix = Matrix4x4.TRS(pos, rot, t.lossyScale);
 
-        if (displayType == VisualiseGizmos.HDisplayType.FirstPosition ||
-            displayType == VisualiseGizmos.HDisplayType.AllPositions)
+        if (displayType == MappingHelper.HDisplayType.FirstPosition ||
+            displayType == MappingHelper.HDisplayType.AllPositions)
         {
             foreach (int category in hpointData._categorys)
             {
@@ -96,19 +96,19 @@ public static class GizmosHelper
                     Gizmos.DrawCube(hpdCubeOffset, hpdCubeSize);
                 }
 
-                if (displayType == VisualiseGizmos.HDisplayType.FirstPosition)
+                if (displayType == MappingHelper.HDisplayType.FirstPosition)
                 {
                     break;
                 }
             }
         }
-        else if (displayType == VisualiseGizmos.HDisplayType.Shape)
+        else if (displayType == MappingHelper.HDisplayType.Shape)
         {
             Gizmos.DrawWireSphere(Vector3.zero, hpdSafeSize);
             Gizmos.color = Color.yellow;
             Gizmos.DrawCube(hpdCubeOffset, hpdCubeSize);
         }
-        else if (displayType == VisualiseGizmos.HDisplayType.Icon)
+        else if (displayType == MappingHelper.HDisplayType.Icon)
         {
             Gizmos.DrawIcon(t.position + Vector3.up * 0.5f, "icon_h");
         }

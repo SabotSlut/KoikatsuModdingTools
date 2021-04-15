@@ -7,33 +7,33 @@ namespace H
     public class HPointData : MonoBehaviour
     {
         [SerializeField]
-        [Header("Hシーンでのカテゴリー番号")]
+        [Header("H Scene Category Numbers")]
         public int[] _categorys;
 
         private Transform _selfTransform;
 
         [SerializeField]
-        [Header("対")]
+        [Header("Targets")]
         private string[] _targets;
 
         public Transform[] _objTargets = new Transform[0];
 
-        [Header("グループ")]
+        [Header("Group")]
         [SerializeField]
         private string[] _groups;
 
         public Transform[] _objGroups = new Transform[0];
 
-        [Header("オフセット位置")]
+        [Header("Offset Position")]
         [SerializeField]
         internal Vector3 _offsetPos;
 
         [SerializeField]
-        [Header("オフセット回転")]
+        [Header("Offset Angle")]
         internal Vector3 _offsetAngle;
 
         [SerializeField]
-        [Header("慣れ判断 0:判定しない 1:慣れ以上")]
+        [Header("Experience Required (0: Virgins Allowed, 1: Virgins Banned)")]
         private int _experience;
     }
 }

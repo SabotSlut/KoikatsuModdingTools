@@ -5,26 +5,35 @@ namespace ActionGame.MapObject
     public class Kind : MonoBehaviour
     {
         [SerializeField]
-        [Header("Hカテゴリー")]
+        [Header("H Scene Category Numbers")]
         private int[] _categoryes;
 
-        [Header("対")]
+        [Header("Targets")]
         [SerializeField]
         private Transform[] _targets;
 
         [SerializeField]
-        [Header("グループ")]
+        [Header("Groups")]
         private Transform[] _groups;
 
-        [Header("オフセット位置")]
+        [Header("Offset Position")]
         [SerializeField]
         internal Vector3 _offsetPos;
 
         [SerializeField]
-        [Header("オフセット回転")]
+        [Header("Offset Rotation")]
         internal Vector3 _offsetAngle;
 
-        private Vector3 backupPos;
-        private Vector3 backupAngle;
+        public int[] categoryes
+        {
+            set
+            {
+                this._categoryes = value;
+            }
+            get
+            {
+                return this._categoryes;
+            }
+        }
     }
 }
