@@ -165,7 +165,7 @@ GameObject:
   m_Component:
   - component: {fileID: 148036285}
   m_Layer: 0
-  m_Name: HPoint Continaer
+  m_Name: HPoint Container
   m_TagString: EditorOnly
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
